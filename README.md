@@ -49,7 +49,7 @@ See the results:
 - DD2: showcases the value multiplication  of the results
 - DD3: showcases average value of the results
 
-From the image below you can see that second bank would be the best even despite having very poor performance for one of its criteria
+From the image below you can see that second bank would be the best despite having very poor performance for one of its criteria
 
 
 ![image](https://user-images.githubusercontent.com/67912058/217529234-0e7fa847-d189-44e4-aa9c-f696fb96a34b.png)
