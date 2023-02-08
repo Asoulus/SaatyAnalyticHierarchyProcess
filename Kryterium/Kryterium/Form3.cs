@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,8 +54,11 @@ namespace Kryterium
 
             criteriaName_lbl.Text = "Criteria name: " + criteriaNames[currentIndex].ToString();
 
-            string path = "C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ" + (selectedTypes[currentIndex]).ToString() + ".png";
-            type_pctrbx.Image = Image.FromFile(path);
+            //string path = "C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ" + (selectedTypes[currentIndex]).ToString() + ".png";
+            //type_pctrbx.Image = Image.FromFile(path);
+
+            type_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ" + (selectedTypes[currentIndex]).ToString() +".png"));
+            
 
             ClearTextBoxes();
             LockTextBoxes(selectedTypes[currentIndex]);

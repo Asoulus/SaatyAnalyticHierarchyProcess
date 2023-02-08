@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.PropertyGridInternal;
 
 namespace Kryterium
 {
@@ -21,13 +23,20 @@ namespace Kryterium
         public Form2(List<string> criteriaNames)
         {
             InitializeComponent();
-            type1_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ1.png");
-            type2_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ2.png");
-            type3_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ3.png");
-            type4_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ4.png");
-            type5_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ5.png");
-            type6_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ6.png");
-            type7_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ7.png");
+            //type1_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ1.png");
+            type1_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ1.png"));
+            //type2_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ2.png");
+            type2_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ2.png"));
+            //type3_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ3.png");
+            type3_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ3.png"));
+            //type4_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ4.png");
+            type4_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ4.png"));
+            //type5_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ5.png");
+            type5_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ5.png"));
+            //type6_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ6.png");
+            type6_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ6.png"));
+            //type7_pctrbx.Image = Image.FromFile("C:/Users/rynsk/Desktop/WzoryRozmyte/Kryterium/Kryterium/Images/Typ7.png");
+            type7_pctrbx.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/Typ7.png"));
 
             this.CriteriaAmount = criteriaNames.Count;
             CreateTextBoxes(criteriaNames);

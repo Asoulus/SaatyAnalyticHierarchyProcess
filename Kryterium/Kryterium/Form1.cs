@@ -81,12 +81,7 @@ namespace Kryterium
             criteriaNames_btn.Hide();
             names_lbl.Hide();
             criteriaAlphas_lbl.Hide();
-            //alternativesNames_lbl.Hide();
             matrixOperation_lbl.Text = "";
-            //alternativesAlphas_lbl.Hide();
-            //alternativesNames_btn.Hide();
-            //bestScore_lbl.Text = "";
-            //bestResult_lbl.Text = "";
         }
 
         private void confirm_Click(object sender, EventArgs e)
@@ -121,23 +116,6 @@ namespace Kryterium
             return true;
         }
 
-        /*public bool CheckAlternativesNameTextBoxes()
-        {
-            if (alternativesAmount_tb.Text.Equals(""))
-            {
-                return false;
-            }
-
-
-            AlternativesAmount = ConvertToInt(alternativesAmount_tb.Text);
-
-            if (AlternativesAmount > 10 || AlternativesAmount < 2)
-            {
-                return false;
-            }
-    
-            return true;
-        }*/
 
         private void liczbaKryteriow_tb_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -171,35 +149,6 @@ namespace Kryterium
 
             criteriaNames_btn.Show();
         }
-
-        /*private void ShowAlternativesNames()
-        {
-            alternativesNames_lbl.Show();
-            criteriaAlphas_lbl.Show();
-
-            for (int i = 0; i < alternativesAmount; i++)
-            {
-                TextBox tmp = new TextBox();
-                this.alternatives_pnl.Controls.Add(tmp);
-
-                tmp.Top = 40 * i;
-                tmp.Left = 5;
-
-                tmp.MinimumSize = new Size(30, 30);
-                tmp.Width = 160;
-                tmp.Height = 50;
-
-                tmp.Font = new Font(tmp.Font.FontFamily, 15);
-                tmp.MaxLength = 15;
-                alternativesTextBoxes.Add(tmp);
-            }
-
-            this.alternatives_pnl.Controls.Add(alternativesNames_btn);
-            alternativesNames_btn.Top = 40 * AlternativesAmount;
-            alternativesNames_btn.Left = 5;
-
-            alternativesNames_btn.Show();
-        }*/
 
         private void CreateMatrix(int size)
         {
@@ -480,28 +429,6 @@ namespace Kryterium
                     }
                 }
             }
-
-            /* if (calculationState.Equals("alternatives"))
-             {
-                 if (currentCriteriaIndex <= criteriaAmount)
-                 {
-                     SaveCriteriaMatrixValues(alternativesMatrixInput[currentCriteriaIndex]);
-                     CalculateTotals(alternativesTotals[currentCriteriaIndex], AlternativesAmount);
-                     CalculateAlphas(alternativesAlphas[currentCriteriaIndex], alternativesTotals[currentCriteriaIndex], AlternativesAmount);
-
-                     currentCriteriaIndex++;
-                     TryToPrintAlphas();
-                 }             
-             }
-             else
-             {
-                 SaveCriteriaMatrixValues(criteriaMatrixInput);
-                 CalculateTotals(criteriaTotals, CriteriaAmount);
-                 CalculateAlphas(criteriaAlphas, criteriaTotals, CriteriaAmount);
-                 ShowAlphas(this.criteriaAlphas_pnl, criteriaAlphas);
-
-                 PrepareForAlternatives();
-             }*/
 
             SaveCriteriaMatrixValues(criteriaMatrixInput);
             CalculateTotals(criteriaTotals, CriteriaAmount);
@@ -861,8 +788,7 @@ namespace Kryterium
 
         private void PrepareForAlternatives()
         {
-            //alternativesNames_lbl.Show();
-            //ShowAlternativesNames();
+
 
             ClearMatrixLabels();
             ClearMatrixList();
@@ -870,36 +796,7 @@ namespace Kryterium
             FillAlternativesCalculationList();
         }
 
-        /*private void TryToPrintAlphas()
-        {         
 
-            if (currentCriteriaIndex == criteriaNames.Count)
-            {
-
-                if (!CheckDataConsistency(criteriaMatrixInput, CriteriaAmount, criteriaAlphas))
-                {
-                    return;
-                }
-
-                for (int i = 0; i < CriteriaAmount; i++)
-                {
-                    bool validaton = CheckDataConsistency(alternativesMatrixInput[i], AlternativesAmount, alternativesAlphas[i]);
-
-                    if (!validaton)
-                    {
-                        return;
-                    }
-                }
-
-                CalculateResult();
-            }
-            else
-            {
-                ClearMatrixLabels();
-                ClearMatrixList();
-                CreateMatrixWithLabels(alternativesNames, "Assessing alternatives of '" + criteriaNames[currentCriteriaIndex] + "' criteria.");
-            }          
-        }*/
 
         private void LockAllInput()
         {
@@ -914,66 +811,7 @@ namespace Kryterium
             }
         }
 
-        /*private void CalculateResult()
-        {        
-            LockAllInput();
 
-            string path = @"C:\Users\rynsk\Desktop\Algorytm\rezultat.txt";
-            
-            List<string> lines = new List<string>();
-
-            //resultList
-            for (int i = 0; i < AlternativesAmount; i++)
-            {
-                string tmpString = "e" + (i + 1) + ": ";
-                double tmp = 0;
-
-                for (int j = 0; j < CriteriaAmount; j++)
-                {
-                    tmp += criteriaAlphas[j] * alternativesAlphas[j][i];
-                    tmpString += Math.Round(criteriaAlphas[j], 3) + " * " + Math.Round(alternativesAlphas[j][i], 3) + " + ";
-                }
-                tmpString += ", SUMA: " + Math.Round(tmp, 3);
-
-                lines.Add(tmpString);
-                resultList.Add(tmp);
-            }
-
-            File.WriteAllLines(path, lines);
-            //ShowAlphas(this.alternativesAlphas_pnl, resultList);
-            //DisplayBestAlternative();
-        }*/
-
-        /*private void DisplayBestAlternative()
-        {
-            int bestIndex = 0;
-            double max = 0.0;
-
-            for (int i = 0; i < resultList.Count; i++)
-            {
-                if (resultList[i] > max)
-                {
-                    max = resultList[i];
-                    bestIndex = i;
-                }
-            }
-
-            //best result name lbl
-            results_pnl.Controls.Add(bestResult_lbl);
-
-            bestResult_lbl.Text = "Best alternative is '" + alternativesNames[bestIndex]+ "'";
-            
-            bestResult_lbl.Top = 5;
-            bestResult_lbl.Left = 5;
-
-            //best score lbl
-            results_pnl.Controls.Add(bestScore_lbl);
-
-            bestScore_lbl.Text = "with a score of " + Math.Round(max, 5);
-
-            bestScore_lbl.Top = 35;
-            bestScore_lbl.Left = 5;
-        }*/
 
         private bool CheckDataConsistency(List<double> matrixInputList, int matrixSize, List<double> alphasList)
         {
