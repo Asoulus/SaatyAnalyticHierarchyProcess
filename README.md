@@ -45,9 +45,9 @@ Enter the amount of alternatives (banks) and their names, then input each banks 
 ### Step 6:
 See the results:
 
--DD1: showcases lowest value of the results
--DD2: showcases the value multiplication  of the results
--DD3: showcases average value of the results
+- DD1: showcases lowest value of the results
+- DD2: showcases the value multiplication  of the results
+- DD3: showcases average value of the results
 
 From the image below you can see that second bank would be the best even despite having very poor performance for one of its criteria
 
